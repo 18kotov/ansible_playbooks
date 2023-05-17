@@ -1,0 +1,21 @@
+---
+- name: Copy file to remote host
+  hosts: all
+  become: true
+  tasks:
+    - name: Copy file postgres
+      copy:
+        src: /home/kotov/bot_memo/bot_images/postgres_alpine.tar
+        dest: /home/kotov/tg_bot/
+        mode: 0644
+    - name: Copy file bot_editor
+      copy:
+        src: /home/kotov/bot_memo/bot_images/bot_editor.tar
+        dest: /home/kotov/tg_bot/
+        mode: 0644
+
+    - name: Copy file bot_poster
+      copy:
+        src: /home/kotov/bot_memo/bot_images/bot_poster.tar
+        dest: /home/kotov/tg_bot/
+        mode: 0644

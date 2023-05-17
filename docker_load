@@ -1,0 +1,25 @@
+---
+- hosts: all
+  gather_facts: no
+  become: true
+  tasks:
+    - name: load container postgres
+      docker_image:
+        name: postgres:alpine
+        load_path: /home/kotov/tg_bot/postgres_alpine.tar
+        state: present
+        source: load
+
+    - name: load container bot_editor
+      docker_image:
+        name: bot_editor:1.0
+        load_path: /home/kotov/tg_bot/bot_editor.tar
+        state: present
+        source: load
+
+    - name: load container bot_poster
+      docker_image:
+        name: bot_poster:1.0
+        load_path: /home/kotov/tg_bot/bot_poster.tar
+        state: present
+        source: load
