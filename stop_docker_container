@@ -1,0 +1,16 @@
+---
+- name: Stop Docker container
+  hosts: all
+  become: true
+  vars:
+    container_name: "{{ container_name_param }}"
+
+  tasks:
+    - name: Stop the Docker container
+      community.docker.docker_container:
+        name: "{{ container_name }}"
+        state: stopped
+
+    - name: Print message about stopping the container
+      ansible.builtin.debug:
+        msg: "Container '{{ container_name }}' has been stopped."
